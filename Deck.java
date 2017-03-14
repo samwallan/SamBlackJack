@@ -1,7 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.*;
 
-
 public class Deck  {
     ArrayList<Card> cards;
     String deckString ="";
@@ -9,9 +8,12 @@ public class Deck  {
         this.cards = new ArrayList<>();
     }
 
-public int dealCard(){
+public Card dealCard(){
     //returns a random card from the deck's arrayList of cards (name: cards)
-    return cards.get((int)Math.floor(Math.random() * cards.size())).totalValue;
+    int rando = (int)Math.floor(Math.random() * cards.size());
+    Card theCard = cards.get(rando);
+    cards.remove(rando);
+    return theCard;
 }
 
 public String toString(){
