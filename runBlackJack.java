@@ -25,6 +25,44 @@ public class runBlackJack {
         deal.newCard(myDeck.dealCard());
 
         System.out.println("Welcome to blackjack. Your cards are "+sam.toString()+". The dealer shows a "+ deal.toString()+". Type 's' to stay and 'h' to hit.");
+        Scanner scan = new Scanner(System.in);
+        String userInput = scan.nextLine().toLowerCase();
+
+
+
+
+        if(userInput.equals("h")){
+            sam.newCard(myDeck.dealCard());
+            System.out.println("Your hand is now"+ sam.toString());
+            if(sam.valueOfHand() > 21){
+                System.out.println("That means you lose.");
+            }else if(sam.valueOfHand() == 21){
+                System.out.println("I guess that means you win.");
+
+            }else{
+                System.out.println("Type 's' to stay and 'h' to hit."+ sam.valueOfHand());
+
+            }
+        }else if(userInput.equals("s")){
+
+            for(int i = 0; i<= 1; i++){
+                if(deal.valueOfHand()<17){
+                    deal.newCard(myDeck.dealCard());
+                    if(deal.valueOfHand()<17){
+                        i=1;
+                    }
+                }
+            }
+
+
+            System.out.println("You chose to stay. Your hand value is "+ sam.valueOfHand()+". The dealer's hand value is "+ deal.valueOfHand()+".");
+            if (sam.valueOfHand()>deal.valueOfHand()){
+                System.out.println("You win.");
+            }
+
+        }
+
+
 
 
     }
