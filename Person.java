@@ -7,6 +7,7 @@ public class Person {
     int handValue;
 
 public int valueOfHand(){
+    handValue = 0;
     for(int i=0; i<hand.size(); i++){
        handValue += hand.get(i).totalValue;
    }
