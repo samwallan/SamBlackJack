@@ -31,12 +31,13 @@ public class runBlackJack {
 
             System.out.println("You have " + sam.bank + " dollars to bet. Enter how much you want to bet");
             String userInpu = scan.nextLine().toLowerCase();
-
+            if(userInpu.matches("-?\\d+(\\.\\d+)?")){
+                userInpu = String.valueOf(sam.bank);
             if(Integer.parseInt(userInpu)<sam.bank+1){
                 betamnt = Integer.parseInt(userInpu);
             }else{
                 betamnt = sam.bank;
-            }
+            }}
             sam.bank = sam.bank - betamnt;
             System.out.println("You bet " + betamnt + ". You have " + sam.bank + " left.");
 
@@ -100,8 +101,11 @@ public class runBlackJack {
                 userInpu = scan.nextLine().toLowerCase();
                 if (userInpu.equals("y")) {
                     ifthis = true;
-                } else {
+                } else if( userInpu.equals('n')){
                     ifthis = false;
+                }else{
+                    System.out.println("Thats not an 'n' or a 'y', but I guess that means you want to play again.");
+                    ifthis = true;
                 }
             }else{
                 System.out.println("You're out of money and lose the entire game.");
