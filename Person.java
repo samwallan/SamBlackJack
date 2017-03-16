@@ -6,6 +6,11 @@ public class Person {
     ArrayList<Card> hand= new ArrayList<Card>();
     int handValue;
 
+    public void clearHand(){
+        this.hand.clear();
+
+    }
+
 public int valueOfHand(){
     handValue = 0;
     for(int i=0; i<hand.size(); i++){
