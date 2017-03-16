@@ -31,13 +31,13 @@ public class runBlackJack {
 
             System.out.println("You have " + sam.bank + " dollars to bet. Enter how much you want to bet");
             String userInpu = scan.nextLine().toLowerCase();
-            if(userInpu.matches("-?\\d+(\\.\\d+)?")){
-                userInpu = String.valueOf(sam.bank);
+
+                /* userInpu = String.valueOf(sam.bank); */
             if(Integer.parseInt(userInpu)<sam.bank+1){
                 betamnt = Integer.parseInt(userInpu);
             }else{
                 betamnt = sam.bank;
-            }}
+            }
             sam.bank = sam.bank - betamnt;
             System.out.println("You bet " + betamnt + ". You have " + sam.bank + " left.");
 
@@ -48,44 +48,48 @@ public class runBlackJack {
             while (check) {
                 String userInput = scan.nextLine().toLowerCase();
 
-                if (userInput.equals("h")) {
-                    sam.newCard(myDeck.dealCard());
-                    System.out.println("Your hand is now" + sam.toString());
-                    if (sam.valueOfHand() > 21) {
-                        System.out.println("That means you lose. You're over 21.");
-                        win = false;
-                        check = false;
-                    } else if (sam.valueOfHand() == 21) {
-                        System.out.println("I guess that means you win. You got 21 exactly.");
-                        win = true;
-                        check = false;
-                    } else {
-                        System.out.println("Type 's' to stay and 'h' to hit.");
-                    }
-                } else if (userInput.equals("s")) {
+                switch (userInput) {
+                    case "h":
+                        sam.newCard(myDeck.dealCard());
+                        System.out.println("Your hand is now" + sam.toString());
+                        if (sam.valueOfHand() > 21) {
+                            System.out.println("That means you lose. You're over 21.");
+                            win = false;
+                            check = false;
+                        } else if (sam.valueOfHand() == 21) {
+                            System.out.println("I guess that means you win. You got 21 exactly.");
+                            win = true;
+                            check = false;
+                        } else {
+                            System.out.println("Type 's' to stay and 'h' to hit.");
+                        }
+                        break;
+                    case "s":
 
-                    for (int i = deal.valueOfHand(); i < 17; i++) {
-                        deal.newCard(myDeck.dealCard());
-                        i = deal.valueOfHand();
-                    }
-                    System.out.println("You chose to stay. Your hand value is " + sam.valueOfHand() + ". The dealer's hand " +
-                            "was" + deal.revealHand() + ", with value  " + deal.valueOfHand() + ".");
-                    if (sam.valueOfHand() > deal.valueOfHand() && sam.valueOfHand() < 22 && !(sam.valueOfHand() == deal.valueOfHand())) {
-                        System.out.println("You win.");
-                        win = true;
-                        check = false;
-                    } else if (sam.valueOfHand() < deal.valueOfHand() && deal.valueOfHand() < 22) {
-                        System.out.println("You lose.");
-                        win = false;
-                        check = false;
-                    } else {
-                        System.out.println("You win!");
-                        win = true;
-                        check = false;
-                    }
+                        for (int i = deal.valueOfHand(); i < 17; i++) {
+                            deal.newCard(myDeck.dealCard());
+                            i = deal.valueOfHand();
+                        }
+                        System.out.println("You chose to stay. Your hand value is " + sam.valueOfHand() + ". The dealer's hand " +
+                                "was" + deal.revealHand() + ", with value  " + deal.valueOfHand() + ".");
+                        if (sam.valueOfHand() > deal.valueOfHand() && sam.valueOfHand() < 22 && !(sam.valueOfHand() == deal.valueOfHand())) {
+                            System.out.println("You win.");
+                            win = true;
+                            check = false;
+                        } else if (sam.valueOfHand() < deal.valueOfHand() && deal.valueOfHand() < 22) {
+                            System.out.println("You lose.");
+                            win = false;
+                            check = false;
+                        } else {
+                            System.out.println("You win!");
+                            win = true;
+                            check = false;
+                        }
 
-                } else {
-                    System.out.println("Enter an 's' or an 'h'.");
+                        break;
+                    default:
+                        System.out.println("Enter an 's' or an 'h'.");
+                        break;
                 }
                 if (win) {
                     sam.bank = sam.bank + (2 * betamnt);
