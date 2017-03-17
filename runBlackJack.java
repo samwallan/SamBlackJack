@@ -2,6 +2,7 @@ import java.util.*;
 
 public class runBlackJack {
     public static void main(String[] args) {
+        System.out.println("Hello");
         boolean ifthis = true;
 
         boolean win = false;
@@ -32,8 +33,7 @@ public class runBlackJack {
             System.out.println("You have " + sam.bank + " dollars to bet. Enter how much you want to bet");
             String userInpu = scan.nextLine().toLowerCase();
 
-                /* userInpu = String.valueOf(sam.bank); */
-            if(Integer.parseInt(userInpu)<sam.bank+1){
+            if(!(Integer.parseInt(userInpu) >= (sam.bank))){
                 betamnt = Integer.parseInt(userInpu);
             }else{
                 betamnt = sam.bank;
@@ -57,7 +57,7 @@ public class runBlackJack {
                             win = false;
                             check = false;
                         } else if (sam.valueOfHand() == 21) {
-                            System.out.println("I guess that means you win. You got 21 exactly.");
+                            System.out.println("You win "+betamnt+"dollars. You got 21 exactly.");
                             win = true;
                             check = false;
                         } else {
@@ -66,14 +66,14 @@ public class runBlackJack {
                         break;
                     case "s":
 
-                        for (int i = deal.valueOfHand(); i < 17; i++) {
+                        for (int i = deal.valueOfHand(); i < 16; i++) {
                             deal.newCard(myDeck.dealCard());
                             i = deal.valueOfHand();
                         }
                         System.out.println("You chose to stay. Your hand value is " + sam.valueOfHand() + ". The dealer's hand " +
                                 "was" + deal.revealHand() + ", with value  " + deal.valueOfHand() + ".");
                         if (sam.valueOfHand() > deal.valueOfHand() && sam.valueOfHand() < 22 && !(sam.valueOfHand() == deal.valueOfHand())) {
-                            System.out.println("You win.");
+                            System.out.println("You win "+betamnt+" dollars.");
                             win = true;
                             check = false;
                         } else if (sam.valueOfHand() < deal.valueOfHand() && deal.valueOfHand() < 22) {
@@ -81,7 +81,7 @@ public class runBlackJack {
                             win = false;
                             check = false;
                         } else {
-                            System.out.println("You win!");
+                            System.out.println("You win "+betamnt+" dollars.");
                             win = true;
                             check = false;
                         }
@@ -99,13 +99,13 @@ public class runBlackJack {
 
 
             }
-            System.out.println("You have " + sam.bank + " dollars left.");
+            System.out.println("You have " + sam.bank + " dollars.");
             if(!(sam.bank == 0)){
                 System.out.println("Play again? Type 'y' for yes and 'n' for no");
                 userInpu = scan.nextLine().toLowerCase();
                 if (userInpu.equals("y")) {
                     ifthis = true;
-                } else if( userInpu.equals('n')){
+                } else if( userInpu.equals("n")){
                     ifthis = false;
                 }else{
                     System.out.println("Thats not an 'n' or a 'y', but I guess that means you want to play again.");
@@ -116,6 +116,7 @@ public class runBlackJack {
                 ifthis = false;
             }
         }
+        System.out.println("Bye");
     }
 }
 
