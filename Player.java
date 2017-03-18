@@ -16,5 +16,7 @@ public class Player extends Person {
         }
         return handString;
     }
-
+    public void moneyChange(int change){
+        this.bank += change;
+    }
 }

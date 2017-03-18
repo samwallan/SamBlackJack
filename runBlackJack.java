@@ -38,7 +38,8 @@ public class runBlackJack {
             }else{
                 betamnt = sam.bank;
             }
-            sam.bank = sam.bank - betamnt;
+            sam.moneyChange(betamnt*(-1));
+            //sam.bank = sam.bank - betamnt;
             System.out.println("You bet " + betamnt + ". You have " + sam.bank + " left.");
 
             System.out.println("Welcome to the table. Your cards are " + sam.toString() + ". The dealer shows a " + deal.toString() + ". Type 's' to stay and 'h' to hit.");
@@ -92,7 +93,8 @@ public class runBlackJack {
                         break;
                 }
                 if (win) {
-                    sam.bank = sam.bank + (2 * betamnt);
+                    sam.moneyChange(2*betamnt);
+                    //sam.bank = sam.bank + (2 * betamnt);
 
                 }
 
