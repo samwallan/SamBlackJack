@@ -3,11 +3,16 @@ import java.util.ArrayList;
 
 public class Person {
 
+    //private final int totalHandValue;
     ArrayList<Card> hand= new ArrayList<Card>();
     int handValue;
 
     public void clearHand(){
         this.hand.clear();
+
+    }
+    public Person() {
+       // int totalHandValue = this.valueOfHand();
 
     }
 

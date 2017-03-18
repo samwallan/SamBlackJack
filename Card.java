@@ -14,7 +14,7 @@ public class Card {
 
     }
     public String calcSuit(){
-        String suitStr = new String();
+        String suitStr;
         switch (this.suit){
             case 1:
                 suitStr = "Clubs";

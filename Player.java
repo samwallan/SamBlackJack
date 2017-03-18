@@ -4,9 +4,9 @@ public class Player extends Person {
     String handString;
     int bank;
     public Player() {
-        this.handString = new String();
+        this.handString = "";
         this.handValue= valueOfHand();
-        this.bank = new Integer(100);
+        this.bank = 100;
     }
 
     public String toString(){
